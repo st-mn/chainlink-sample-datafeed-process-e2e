@@ -1,0 +1,35 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:13.1-alpine
+    ports: 
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=DXg4345GFSDshyZ213
+      - POSTGRES_DB=chainlink    
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  chainlink:
+    build: .
+    stdin_open: true
+    tty: true
+    env_file:
+      - chainlink.env
+    ports:
+      - 6688:6688
+    links:
+      - postgres
+    depends_on:
+      - postgres
+    volumes: 
+      - ./chainlink_data:/chainlink
+    entrypoint: dockerize -wait tcp://postgres:5432 -timeout 300s chainlink
+    command: local node -p /chainlink/.password -a /chainlink/.api
+
+
+
+volumes:
+  db_data:
+  chainlink_data:
