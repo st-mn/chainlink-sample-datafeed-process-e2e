@@ -40,8 +40,8 @@ Example smart contract can access the data that is provided by oracle node throu
 
 
 ## Technologies Used
-- Solidity
 - Chainlink
+- Solidity
 - Docker
 - NodeJS
 
