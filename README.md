@@ -4,9 +4,9 @@ This repository contains quick example of Chainlink Datafeed End-to-End Process.
 
 ```mermaid 
 graph LR;
-  1[Data Source Ingestion] --> 2[[Oracle Node Setup]];
-  2 --> 3[[Oracle Node Monitoring]];
-  3 --> 4[[Smart Contract Consuming Datafeed]];
+  1[Data Source Ingestion] --> 2[Oracle Node Setup];
+  2 --> 3[Oracle Node Monitoring];
+  3 --> 4[Smart Contract Consuming Datafeed];
 ```
 ## Background
 
