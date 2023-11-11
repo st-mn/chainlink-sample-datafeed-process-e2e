@@ -2,10 +2,12 @@
 
 This repository contains example of Chainlink Datafeed End-to-End Process.
 
-graph LR
-A[Ingestion of Data Source to Adapter] --> B{Oracle Node Setup}
-B --> C{Oracle Node Monitoring}
-C --> D[Smart Contract Consuming Datafeed]
+```mermaid 
+graph LR;
+  1((Ingestion of Data Source to Adapter)) --> 2((Oracle Node Setup));
+  2 --> 3((Oracle Node Monitoring));
+  3 --> 4((Smart Contract Consuming Datafeed));
+```
 
 ## Table of Contents
 
