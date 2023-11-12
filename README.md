@@ -1,6 +1,6 @@
 # Chainlink Sample Datafeed End-to-End Process
 
-This repository contains quick example of Chainlink Datafeed End-to-End Process.
+This project demonstrates Chainlink Datafeed End-to-End Process. It includes collection of repositories with sample  implementation of each step of the process, ranging from initial data source, through processing by chainlink node, until onboarded datafeed consumed in a sample smart contract on blockchain.
 
 ```mermaid 
 graph LR;
