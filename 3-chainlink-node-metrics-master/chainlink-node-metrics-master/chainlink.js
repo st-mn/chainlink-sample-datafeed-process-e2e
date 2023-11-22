@@ -1,3 +1,23 @@
+/*
+
+This code provides a set of functions for interacting with a Chainlink node. The functions include:
+
+* `clAuthenticate`: Authenticates with the Chainlink node using an email and password.
+* `clBalances`: Retrieves the ETH and LINK balances for the authenticated account.
+* `clConfig`: Retrieves the configuration for the Chainlink node.
+* `clRunStats`: Retrieves statistics about Chainlink runs.
+
+The code uses the `got` library to make HTTP requests to the Chainlink node's API. The `bunyan` library is used for logging. The `tough-cookie` library is used to manage cookies for the HTTP requests. The `async/mapLimit` library is used to limit the number of concurrent requests.
+
+The code exports the following functions:
+
+* `clAuthenticate`
+* `clBalances`
+* `clConfig`
+* `clRunStats`
+*/
+
+
 const got = require('got')
 const logger = require('bunyan').createLogger({ name: 'chainlink', level: process.env.LOG_LEVEL || 'info' })
 const { CookieJar } = require('tough-cookie')
