@@ -1,3 +1,18 @@
+/**
+ * External adapter to fetch weather data from OpenWeatherMap using the Chainlink external adapter framework.
+ *
+ * @description This adapter utilizes the Chainlink Requester and Validator classes to interact with OpenWeatherMap API.
+ * It defines custom error scenarios and custom parameters specific to the OpenWeatherMap API.
+ *
+ * The createRequest function takes an input object containing the request parameters and a callback function.
+ * It validates the input data, constructs the API request URL and parameters, and sends the request using the Requester.
+ * It handles both successful and error responses, returning the appropriate data to the callback function.
+ *
+ * The adapter provides wrappers for GCP Functions, AWS Lambda, and newer AWS Lambda implementations.
+ * It also exposes the createRequest function for testing and running in Express applications.
+ */
+
+
 const { Requester, Validator } = require('@chainlink/external-adapter')
 
 
