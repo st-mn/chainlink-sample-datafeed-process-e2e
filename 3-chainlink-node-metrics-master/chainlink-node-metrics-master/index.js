@@ -1,3 +1,28 @@
+/*
+
+This code defines an Express application that serves as a metrics endpoint for a Chainlink node. The application is configured to listen on a specific port and host, and it exposes several endpoints for retrieving different types of metrics.
+
+The main endpoint, `/influxdb`, returns InfluxDB-formatted metrics for the Chainlink node. These metrics include the ETH and LINK balances for the node's account, the oracle contract address, and the gas price. Additionally, the endpoint can be configured to return extended metrics, which include statistics about Chainlink runs and jobs.
+
+The application also exposes two other endpoints:
+
+* `/`: Returns the package name and version of the application.
+* `/ping`: Returns a simple "OK" response to indicate that the application is healthy.
+
+The code uses the following libraries:
+
+* express: A popular Express.js framework for building web applications.
+* bunyan: A logging library that uses JSON-formatted log messages.
+* tough-cookie: A library for managing cookies in HTTP requests.
+* async/mapLimit: A library for limiting the number of concurrent asynchronous requests.
+* package.json: The package.json file for the application, which contains metadata about the application, such as its name and version.
+
+The code is well-organized and easy to understand. It uses descriptive variable names and functions, and it includes comments to explain the purpose of the code.
+
+Overall, this is a well-written and useful application that can be used to monitor the performance of a Chainlink node.
+*
+*/
+
 const packageJson = require('./package.json')
 const express = require('express')
 const logger = require('bunyan').createLogger({ name: packageJson.name, level: process.env.LOG_LEVEL || 'info' })
