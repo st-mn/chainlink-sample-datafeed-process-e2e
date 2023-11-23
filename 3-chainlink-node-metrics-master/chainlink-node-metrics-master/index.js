@@ -1,6 +1,7 @@
 /*
 
-This code defines an Express application that serves as a metrics endpoint for a Chainlink node. The application is configured to listen on a specific port and host, and it exposes several endpoints for retrieving different types of metrics.
+This code defines an Express application that serves as a metrics endpoint for a Chainlink node. The application is configured to listen on a specific port and host, 
+and it exposes several endpoints for retrieving different types of metrics.
 
 The main endpoint, `/influxdb`, returns InfluxDB-formatted metrics for the Chainlink node. These metrics include the ETH and LINK balances for the node's account, the oracle contract address, and the gas price. Additionally, the endpoint can be configured to return extended metrics, which include statistics about Chainlink runs and jobs.
 
