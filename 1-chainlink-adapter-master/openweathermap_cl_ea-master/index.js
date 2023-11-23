@@ -1,7 +1,7 @@
 /**
  * External adapter to fetch weather data from OpenWeatherMap using the Chainlink external adapter framework.
- *
- * @description This adapter utilizes the Chainlink Requester and Validator classes to interact with OpenWeatherMap API.
+ * Adapters are services which the core of the Chainlink node communicates via its API with a simple JSON specification.
+ * This adapter utilizes the Chainlink Requester and Validator classes to interact with OpenWeatherMap API.
  * It defines custom error scenarios and custom parameters specific to the OpenWeatherMap API.
  *
  * The createRequest function takes an input object containing the request parameters and a callback function.
