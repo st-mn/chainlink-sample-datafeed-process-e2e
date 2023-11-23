@@ -7,7 +7,8 @@ This code provides a set of functions for interacting with a Chainlink node. The
 * `clConfig`: Retrieves the configuration for the Chainlink node.
 * `clRunStats`: Retrieves statistics about Chainlink runs.
 
-The code uses the `got` library to make HTTP requests to the Chainlink node's API. The `bunyan` library is used for logging. The `tough-cookie` library is used to manage cookies for the HTTP requests. The `async/mapLimit` library is used to limit the number of concurrent requests.
+The code uses the `got` library to make HTTP requests to the Chainlink node's API. The `bunyan` library is used for logging. 
+The `tough-cookie` library is used to manage cookies for the HTTP requests. The `async/mapLimit` library is used to limit the number of concurrent requests.
 
 The code exports the following functions:
 
