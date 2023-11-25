@@ -12,7 +12,7 @@
  * It also exposes the createRequest function for testing and running in Express applications.
  */
 
-
+// Use chainlink external adapter.
 const { Requester, Validator } = require('@chainlink/external-adapter')
 
 
@@ -32,8 +32,9 @@ const customParams = {
   endpoint: false
 }
 
+// Define request to the API. 
+// The Validator helps you validate the Chainlink request data
 const createRequest = (input, callback) => {
-  // The Validator helps you validate the Chainlink request data
   const validator = new Validator(callback, input, customParams)
   const jobRunID = validator.validated.id
   const endpoint = validator.validated.data.endpoint || 'weather'
@@ -54,11 +55,11 @@ const createRequest = (input, callback) => {
 
   // The Requester allows API calls be retry in case of timeout
   // or connection failure
+  // It's common practice to store the desired value at the top-level
+  // result key. This allows different adapters to be compatible with
+  // one another.
   Requester.request(config, customError)
     .then(response => {
-      // It's common practice to store the desired value at the top-level
-      // result key. This allows different adapters to be compatible with
-      // one another.
       response.data.result = Requester.validateResultNumber(response.data, ['main','temp'])
       callback(response.status, Requester.success(jobRunID, response))
     })
