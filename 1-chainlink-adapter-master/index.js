@@ -1,8 +1,8 @@
 /**
- * External adapter to fetch weather data from OpenWeatherMap using the Chainlink external adapter framework.
+ * External adapter to fetch ETH/USD data from CoinApi using the Chainlink external adapter framework.
  * Adapters are services which the core of the Chainlink node communicates via its API with a simple JSON specification.
- * This adapter utilizes the Chainlink Requester and Validator classes to interact with OpenWeatherMap API.
- * It defines custom error scenarios and custom parameters specific to the OpenWeatherMap API.
+ * This adapter utilizes the Chainlink Requester and Validator classes to interact with API.
+ * It defines custom error scenarios and custom parameters specific to the API.
  *
  * The createRequest function takes an input object containing the request parameters and a callback function.
  * It validates the input data, constructs the API request URL and parameters, and sends the request using the Requester.
@@ -32,40 +32,28 @@ const customError = (data) => {
 // with a Boolean value indicating whether or not they
 // should be required.
 const customParams = {
-  city: ['q', 'city', 'town'],
-  endpoint: false
+  base: ['base', 'from', 'coin'],
+  quote: ['quote', 'to', 'market']
 }
 
 // Define request to the API. 
 // The Validator helps you validate the Chainlink request data
 const createRequest = (input, callback) => {
-  const validator = new Validator(callback, input, customParams)
+  const validator = new Validator(input, customParams, callback)
   const jobRunID = validator.validated.id
-  const endpoint = validator.validated.data.endpoint || 'weather'
-  const url = `https://api.openweathermap.org/data/2.5/${endpoint}`
-  const q = validator.validated.data.city.toUpperCase()
-  const appid = process.env.API_KEY;
-  console.log(appid);
-
-  const params = {
-    q,
-    appid
-  }
-
-  const config = {
+  const coin = validator.validated.data.base
+  const market = validator.validated.data.quote
+  const url = `https://rest.coinapi.io/v1/exchangerate/${coin}/${market}`
+  const options = {
     url,
-    params
+    qs: {
+      apikey: process.env.API_KEY
+    }
   }
-
-  // The Requester allows API calls be retry in case of timeout
-  // or connection failure
-  // It's common practice to store the desired value at the top-level
-  // result key. This allows different adapters to be compatible with
-  // one another.
-  Requester.request(config, customError)
+  Requester.requestRetry(options)
     .then(response => {
-      response.data.result = Requester.validateResultNumber(response.data, ['main','temp'])
-      callback(response.status, Requester.success(jobRunID, response))
+      response.body.result = Requester.validateResult(response.body, ['rate'])
+      callback(response.statusCode, Requester.success(jobRunID, response))
     })
     .catch(error => {
       callback(500, Requester.errored(jobRunID, error))
