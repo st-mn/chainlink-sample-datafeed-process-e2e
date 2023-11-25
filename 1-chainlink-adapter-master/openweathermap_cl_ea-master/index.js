@@ -10,6 +10,9 @@
  *
  * The adapter provides wrappers for GCP Functions, AWS Lambda, and newer AWS Lambda implementations.
  * It also exposes the createRequest function for testing and running in Express applications.
+ *
+ * Once adapter is tested and working we can host it on our node or ask node providers to host it for us.
+ *
  */
 
 // Use chainlink external adapter.
