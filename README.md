@@ -28,9 +28,9 @@ Chainlink oracle node is set up for validating and processing the data that is i
 Example smart contract can access the data that is provided by oracle node through Chainlink datafeed. 
 
 ## Stepwise Code Examples
-- [Step 1: Data Source Ingestion](https://github.com/st-mn/chainlink-sample-datafeed-process-e2e/tree/main/1-chainlink-adapter-master/openweathermap_cl_ea-master)
-- [Step 2: Oracle Node Setup](https://github.com/st-mn/chainlink-sample-datafeed-process-e2e/tree/main/2-chainlink-node-compose-master)
-- [Step 3: Smart Contract Consuming Datafeed](https://github.com/st-mn/chainlink-sample-datafeed-process-e2e/tree/main/4-chainlink-feed-sample-main)
+- [Step 1: Data Source Ingestion](https://github.com/st-mn/chainlink-sample-datafeed-process-e2e/blob/main/1-chainlink-adapter-master/index.js)
+- [Step 2: Oracle Node Setup](https://github.com/st-mn/chainlink-sample-datafeed-process-e2e/blob/main/2-chainlink-node-compose-master/docker-compose.yaml)
+- [Step 3: Smart Contract Consuming Datafeed](https://github.com/st-mn/chainlink-sample-datafeed-process-e2e/blob/main/3-chainlink-feed-sample-main/DataConsumerV3.sol)
 
 ## Setup Guide
 - [Chainlink External Adapter Technical Setup Notes](https://docs.google.com/document/d/1z6y9ewhPf1cQqMXrHBjlBLKsYk--tkawSwe3xIunTfM/edit#heading=h.e29xadvmt3o7)
