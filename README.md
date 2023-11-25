@@ -15,15 +15,15 @@ Chainlink datafeeds are a key component of the Chainlink ecosystem, providing sm
 
 ## Process
 
-Step 1: Data Source Ingestion
+### Step 1: Data Source Ingestion
 
 Data from external sources is ingested by an external adapter that prepares the data for onboarding to Chainlink node. This data can come from a variety of sources, such as public APIs, databases, or IoT devices. 
 
-Step 2: Oracle Node Setup
+### Step 2: Oracle Node Setup
 
 Chainlink oracle node is set up for validating and processing the data that is ingested into the Chainlink network. Oracle node running in the decentralized network can retrieve the data. 
 
-Step 3: Smart Contract Consuming Datafeed
+### Step 3: Smart Contract Consuming Datafeed
 
 Example smart contract can access the data that is provided by oracle node through Chainlink datafeed. 
 
