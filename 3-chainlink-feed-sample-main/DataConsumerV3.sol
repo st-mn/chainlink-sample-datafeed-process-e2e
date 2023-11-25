@@ -17,6 +17,7 @@
  */
 
  /**
+     * EXAMPLES FOR TEST:
      * Network: Sepolia
      * Aggregator: BTC/USD
      * Address: 0x1b44F3514812d835EB1BDB0acB33d3fA3351Ee43
@@ -35,7 +36,7 @@ contract DataConsumerV3 {
 
     constructor() {
         dataFeed = AggregatorV3Interface(
-            0x1b44F3514812d835EB1BDB0acB33d3fA3351Ee43
+            0x1b44F3514812d835EB1BDB0acB33d3fA3351Ee43 // Pass address to our adapter node datafeed
         );
     }
 
