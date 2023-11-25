@@ -5,8 +5,7 @@ This project demonstrates Chainlink Datafeed End-to-End Process. It includes col
 ```mermaid 
 graph LR;
   1[Data Source Ingestion] --> 2[Oracle Node Setup];
-  2 --> 3[Oracle Node Monitoring];
-  3 --> 4[Smart Contract Consuming Datafeed];
+  2 --> 3[Smart Contract Consuming Datafeed];
 ```
 ## Background
 
@@ -24,19 +23,14 @@ Step 2: Oracle Node Setup
 
 Chainlink oracle node is set up for validating and processing the data that is ingested into the Chainlink network. Oracle node running in the decentralized network can retrieve the data. 
 
-Step 3: Oracle Node Monitoring
-
-Monitoring is set up to collect health metrics from our Chainlink node. 
-
-Step 4: Smart Contract Consuming Datafeed
+Step 3: Smart Contract Consuming Datafeed
 
 Example smart contract can access the data that is provided by oracle node through Chainlink datafeed. 
 
 ## Stepwise Code Examples
 - [Step 1: Data Source Ingestion](https://github.com/st-mn/chainlink-sample-datafeed-process-e2e/tree/main/1-chainlink-adapter-master/openweathermap_cl_ea-master)
 - [Step 2: Oracle Node Setup](https://github.com/st-mn/chainlink-sample-datafeed-process-e2e/tree/main/2-chainlink-node-compose-master)
-- [Step 3: Oracle Node Monitoring](https://github.com/st-mn/chainlink-sample-datafeed-process-e2e/tree/main/3-chainlink-node-metrics-master/chainlink-node-metrics-master)
-- [Step 4: Smart Contract Consuming Datafeed](https://github.com/st-mn/chainlink-sample-datafeed-process-e2e/tree/main/4-chainlink-feed-sample-main)
+- [Step 3: Smart Contract Consuming Datafeed](https://github.com/st-mn/chainlink-sample-datafeed-process-e2e/tree/main/4-chainlink-feed-sample-main)
 
 
 ## Technologies Used
