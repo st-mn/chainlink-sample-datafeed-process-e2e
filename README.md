@@ -32,6 +32,8 @@ Example smart contract can access the data that is provided by oracle node throu
 - [Step 2: Oracle Node Setup](https://github.com/st-mn/chainlink-sample-datafeed-process-e2e/tree/main/2-chainlink-node-compose-master)
 - [Step 3: Smart Contract Consuming Datafeed](https://github.com/st-mn/chainlink-sample-datafeed-process-e2e/tree/main/4-chainlink-feed-sample-main)
 
+## Setup Guide
+- [Chainlink External Adapter Technical Setup Notes](https://docs.google.com/document/d/1z6y9ewhPf1cQqMXrHBjlBLKsYk--tkawSwe3xIunTfM/edit#heading=h.e29xadvmt3o7)
 
 ## Technologies Used
 - Chainlink
