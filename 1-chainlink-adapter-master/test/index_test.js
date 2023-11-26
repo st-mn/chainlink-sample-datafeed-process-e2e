@@ -4,10 +4,10 @@
  * @description This test suite covers both successful and error scenarios for the createRequest function.
  * It verifies the function's behavior for different input parameters and validates the response data.
  *
- * The successful calls section tests the function's ability to handle various city names provided through different parameters (id, data.city, data.q, data.town).
+ * The successful calls section tests the function's ability to handle various city names provided through different parameters.
  * It asserts that the status code is 200, the jobRunID is correct, the data object is not empty, and the result and data.result values are above zero.
  *
- * The error calls section tests the function's handling of invalid input data, such as empty body, empty data object, missing city parameter, and unknown city.
+ * The error calls section tests the function's handling of invalid input data, such as empty body, empty data object.
  * It asserts that the status code is 500, the jobRunID is correct, the status is 'errored', and the error object is not empty.
  */
 
