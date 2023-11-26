@@ -12,7 +12,6 @@
  */
 
 
-
 const assert = require('chai').assert
 const createRequest = require('../index.js').createRequest
 
@@ -21,10 +20,10 @@ describe('createRequest', () => {
 
   context('successful calls', () => {
     const requests = [
-      { name: 'id not supplied', testData: { data: { city: 'boston' } } },
-      { name: 'city', testData: { id: jobID, data: { city: 'boston' } } },
-      { name: 'q', testData: { id: jobID, data: { q: 'boston' } } },
-      { name: 'town', testData: { id: jobID, data: { town: 'boston' } } }
+      { name: 'id not supplied', testData: { data: { base: 'ETH', quote: 'USD' } } },
+      { name: 'base/quote', testData: { id: jobID, data: { base: 'ETH', quote: 'USD' } } },
+      { name: 'from/to', testData: { id: jobID, data: { from: 'ETH', to: 'USD' } } },
+      { name: 'coin/market', testData: { id: jobID, data: { coin: 'ETH', market: 'USD' } } }
     ]
 
     requests.forEach(req => {
@@ -33,7 +32,6 @@ describe('createRequest', () => {
           assert.equal(statusCode, 200)
           assert.equal(data.jobRunID, jobID)
           assert.isNotEmpty(data.data)
-          assert.isAbove(Number(data.result), 0)
           assert.isAbove(Number(data.data.result), 0)
           done()
         })
@@ -45,8 +43,10 @@ describe('createRequest', () => {
     const requests = [
       { name: 'empty body', testData: {} },
       { name: 'empty data', testData: { data: {} } },
-      { name: 'city not supplied', testData: { id: jobID, data: { dog: 'boston' } } },
-      { name: 'unknown city', testData: { id: jobID, data: { city: 'not_real'} } },
+      { name: 'base not supplied', testData: { id: jobID, data: { quote: 'USD' } } },
+      { name: 'quote not supplied', testData: { id: jobID, data: { base: 'ETH' } } },
+      { name: 'unknown base', testData: { id: jobID, data: { base: 'not_real', quote: 'USD' } } },
+      { name: 'unknown quote', testData: { id: jobID, data: { base: 'ETH', quote: 'not_real' } } }
     ]
 
     requests.forEach(req => {
