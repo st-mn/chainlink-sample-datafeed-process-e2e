@@ -3,7 +3,7 @@
 # create bridge in nodeurl/bridges 
 # specify bridge to the url of previously deployed and running adapter (on gcp/aws etc.)
 # create job in nodeurl/jobs
-# specify job that obtains data from adapter as a request with specific parameters
+# specify job that obtains data from adapter as a request with specific parameters and deploys on chain smartcontract with specific address 
 #
 
 version: "3.8"
