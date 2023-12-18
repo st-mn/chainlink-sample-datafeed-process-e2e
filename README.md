@@ -21,7 +21,7 @@ Data from external sources is ingested by an external adapter that prepares the 
 
 ### Step 2: Oracle Node Setup
 
-Chainlink oracle node is set up for validating and processing the data that is ingested into the Chainlink network. Oracle node running in the decentralized network can retrieve the data. 
+Own chainlink oracle node is set up for processing the data that is ingested from adapter into the Chainlink network.
 
 ### Step 3: Smart Contract Consuming Datafeed
 
