@@ -1,0 +1,115 @@
+Agenda
+Build an external adapter
+Test it locally
+Deploy it to GCP as a serverless function
+Create a job specification on a Chainlink Node that uses the adapter
+Create a consumer smart contract that uses the external adapter
+
+
+Chainlink CoinApi External Adapter
+Input Params
+base, from, or coin: The coin to query (required)
+quote, to, or market: The currency to convert to (required)
+Output Format
+{
+ "jobRunID": "1",
+ "data": {
+  "time": "2020-04-15T14:24:15.3834439Z",
+  "asset_id_base": "ETH",
+  "asset_id_quote": "USD",
+  "rate": 159.1132487376848,
+  "result": 159.1132487376848
+ },
+ "result": 159.1132487376848,
+ "statusCode": 200
+}
+Install
+yarn install
+Test
+yarn test
+Create the zip
+zip -r cl-coinapi.zip .
+Docker
+If you wish to use Docker to run the adapter, you can build the image by running the following command:
+docker build . -t coinapi-adapter
+Then run it with:
+docker run -p 8080:8080 -e API_KEY='YOUR_API_KEY' -it coinapi-adapter:latest
+Install to GCP
+In Functions, create a new function, choose to ZIP upload
+Click Browse and select the cl-coinapi.zip file
+Select a Storage Bucket to keep the zip in
+Function to execute: gcpservice
+Click More, Add variable
+NAME: API_KEY
+VALUE: Your_API_key
+(optional) Install to AWS Lambda
+In Lambda Functions, create function
+On the Create function page:
+Give the function a name
+Use Node.js 12.x for the runtime
+Choose an existing role or create a new one
+Click Create Function
+Under Function code, select "Upload a .zip file" from the Code entry type drop-down
+Click Upload and select the cl-coinapi.zip file
+Handler should remain index.handler
+Add the environment variable:
+Key: API_KEY
+Value: Your_API_key
+Save
+
+Add Adapter to Chainlink Node
+cd ~/.chainlink-kovan && docker run -p 6688:6688 -v ~/.chainlink-kovan:/chainlink -it --en
+v-file=.env smartcontract/chainlink local n
+
+New Bridge:
+coinapi-eth
+URL from above
+Create Job Specification that uses the new adapter
+{
+  "initiators": [
+    {
+      "type": "runlog",
+      "params": {
+"address": "0x05c8fadf1798437c143683e665800d58a42b6e19"
+      }
+    }
+  ],
+  "tasks": [
+    {
+      "type": "coinapi-eth",
+      "confirmations": null,
+      "params": {
+      }
+    },
+    {
+      "type": "EthUint256",
+      "confirmations": null,
+      "params": {
+      }
+    },
+    {
+      "type": "ethtx",
+      "confirmations": null,
+      "params": {
+      }
+    }
+  ],
+  "startAt": null,
+  "endAt": null
+}
+
+Create a Consumer Contract that uses the adapter
+
+       oracle = 0x05c8fadf1798437c143683e665800d58a42b6e19;
+        jobId = "48f091b3ed8745e6b94e7227bd69f202";
+
+        uint public rate;
+
+         request.add("action", "account");
+         request.add("value", _account);
+
+
+References
+
+ Building a Chainlink External Adapter Technical Workshop 
+
